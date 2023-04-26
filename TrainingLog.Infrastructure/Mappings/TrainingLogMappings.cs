@@ -9,6 +9,7 @@ public class TrainingLogMappings: Profile
     public TrainingLogMappings() 
     {
         CreateMap<TrainingEvent, TrainingEventDto>();
-            
+        CreateMap<EventType, EventTypeDto>();
+
     }
 }

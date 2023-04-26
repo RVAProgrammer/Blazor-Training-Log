@@ -7,12 +7,10 @@ namespace TrainingLog.Client.Shared;
 
 public partial class AddNewLogEvent
 {
-    [Parameter]
-    public EventCallback<bool> OnSaveSuccessful { get; set; }
+    [Parameter] public EventCallback<bool> OnSaveSuccessful { get; set; }
 
-    [Inject]
-    public ITrainingEventManager TrainingEventManager { get; set; }
-    
+    [Inject] public ITrainingEventManager TrainingEventManager { get; set; }
+
     private TrainingEventDto _newEvent = new();
 
     private EditContext _editContext;
@@ -21,18 +19,17 @@ public partial class AddNewLogEvent
 
     protected override async Task OnInitializedAsync()
     {
-        await LoadEventTypes();
         _editContext = new EditContext(_newEvent);
+        await LoadEventTypes();
     }
 
     private async Task LoadEventTypes()
     {
-       // _eventTypeList = await TrainingEventManager.GetEventTypes();
+        _eventTypeList = await TrainingEventManager.GetEventTypes();
     }
 
     private async Task SaveLog()
     {
-
         await OnSaveSuccessful.InvokeAsync();
     }
 }

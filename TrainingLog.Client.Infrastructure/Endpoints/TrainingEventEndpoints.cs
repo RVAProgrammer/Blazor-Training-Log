@@ -7,5 +7,5 @@ public static class TrainingEventEndpoints
 
 public static class LookupEndpoints
 {
-    public static string GetAllEventTypes = "api/eventTypes";
+    public static string GetAllEventTypes = "api/eventtype";
 }

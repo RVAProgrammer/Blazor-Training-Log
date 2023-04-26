@@ -11,7 +11,7 @@ public partial class Index
     private ITrainingEventManager TrainingEventManager { get; set; }
 
     private List<TrainingEventDto> _trainingEvents = new ();
-
+    private bool _showAddModal;
     private ModalWrapper AddLogEventModal{get;set;}
     protected override async Task OnInitializedAsync()
     {
@@ -23,11 +23,16 @@ public partial class Index
         _trainingEvents = await TrainingEventManager.GetAllTrainingEvents();
     }
 
-    private void ShowAddModal() => AddLogEventModal.Open();
+    private void ShowAddModal()
+    {
+        _showAddModal = true;
+        AddLogEventModal.Open();
+    }
 
     private async Task TrainingLogSaved()
     {
         AddLogEventModal.Close();
+        _showAddModal = false;
         await LoadTrainingEvents();
     }
 
