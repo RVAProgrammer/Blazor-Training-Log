@@ -11,7 +11,7 @@ public partial class AddNewLogEvent
 
     [Inject] public ITrainingEventManager TrainingEventManager { get; set; }
 
-    private TrainingEventDto _newEvent = new();
+    private NewTrainingEventDto _newEvent = new() { EventDate = DateTime.Today };
 
     private EditContext _editContext;
 
@@ -30,6 +30,8 @@ public partial class AddNewLogEvent
 
     private async Task SaveLog()
     {
-        await OnSaveSuccessful.InvokeAsync();
+        var isSuccess = await TrainingEventManager.InsertTrainingEvent(_newEvent);
+        if (isSuccess)
+            await OnSaveSuccessful.InvokeAsync();
     }
 }

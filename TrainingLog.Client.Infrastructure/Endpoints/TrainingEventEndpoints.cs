@@ -2,7 +2,7 @@
 
 public static class TrainingEventEndpoints
 {
-    public static string GetAllTrainingEvents() => "/api/traininglog/";
+    public static string Base() => "/api/traininglog/";
 }
 
 public static class LookupEndpoints

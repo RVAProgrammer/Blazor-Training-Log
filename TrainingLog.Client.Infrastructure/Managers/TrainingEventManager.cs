@@ -8,6 +8,7 @@ public interface ITrainingEventManager
 {
     Task<List<TrainingEventDto>?> GetAllTrainingEvents();
     Task<List<EventTypeDto>> GetEventTypes();
+    Task<bool> InsertTrainingEvent(NewTrainingEventDto newTrainingEvent);
 }
 
 public class TrainingEventManager :ITrainingEventManager
@@ -19,9 +20,16 @@ public class TrainingEventManager :ITrainingEventManager
     }
     
     public async Task<List<TrainingEventDto>?> GetAllTrainingEvents() =>
-        await _httpClient.GetFromJsonAsync<List<TrainingEventDto>>(TrainingEventEndpoints
-            .GetAllTrainingEvents());
+        await _httpClient.GetFromJsonAsync<List<TrainingEventDto>>(TrainingEventEndpoints.Base());
     
     public async Task<List<EventTypeDto>> GetEventTypes() =>
         await _httpClient.GetFromJsonAsync<List<EventTypeDto>>(LookupEndpoints.GetAllEventTypes);
+
+   public async Task<bool> InsertTrainingEvent(NewTrainingEventDto newTrainingEvent)
+   {
+       var result = await _httpClient.PostAsJsonAsync(TrainingEventEndpoints.Base(), newTrainingEvent);
+
+       result.EnsureSuccessStatusCode();
+       return true;//todo
+   }
 }

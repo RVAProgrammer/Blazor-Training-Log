@@ -11,9 +11,9 @@ public class InsertTrainingLog
 {
     public class Command : IRequest<Outcome>
     {
-        public TrainingEventDto TrainingEvent { get; init; }
+        public NewTrainingEventDto TrainingEvent { get; init; }
 
-        public Command(TrainingEventDto trainingEvent)
+        public Command(NewTrainingEventDto trainingEvent)
         {
             TrainingEvent = trainingEvent;
         }
@@ -39,7 +39,7 @@ public class InsertTrainingLog
 
             var evnt = new TrainingEvent
             {
-                Comments = request.TrainingEvent.Comments,
+                Comments = request.TrainingEvent.Comments ?? "",
                 Distance = request.TrainingEvent.Distance,
                 Duration = request.TrainingEvent.Duration,
                 EventDate = request.TrainingEvent.EventDate,

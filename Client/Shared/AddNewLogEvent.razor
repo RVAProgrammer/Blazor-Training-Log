@@ -1,5 +1,5 @@
-﻿
-@if(_eventTypeList.Any()){
+﻿@if (_eventTypeList.Any())
+{
     <EditForm EditContext="@_editContext" OnValidSubmit="SaveLog">
         <DataAnnotationsValidator></DataAnnotationsValidator>
 
@@ -8,24 +8,9 @@
                 <div class="form-group">
                     <label for="eventTitle">Event Title</label>
                     <input class="form-control shadow-none" id="eventTitle" type="text" @bind="_newEvent.EventTitle"/>
+                    <ValidationMessage For="() => _newEvent.EventTitle"></ValidationMessage>
                 </div>
 
-            </div>
-            <div class="mx-4">
-                <div class="form-group">
-                    <label for="duration">Duration</label>
-                    <input class="form-control shadow-none" id="duration" type="text" @bind="_newEvent.Duration"/>
-                </div>
-            </div>
-        </div>
-    
-        <div class="d-flex">
-            <div class="mx-4">
-                <div class="form-group">
-                    <label for="eventDate">Event Date</label>
-                    <input class="form-control shadow-none" id="eventDate" type="text" @bind="_newEvent.EventDate"/>
-                </div>
-    
             </div>
             <div class="mx-4">
                 <div class="form-group">
@@ -37,14 +22,52 @@
                             <option value="@type.EventTypeId">@type.EventTypeName</option>
                         }
                     </select>
+                       <ValidationMessage For="() => _newEvent.EventTypeId"></ValidationMessage>
+                </div>
+            </div>
+            <div class="mx-4">
+                <div class="form-group">
+                    <label for="eventDate">Event Date</label>
+                    <input class="form-control shadow-none" id="eventDate" type="date" @bind="_newEvent.EventDate"/>
+                       <ValidationMessage For="() => _newEvent.EventDate"></ValidationMessage>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="mx-4">
+                <div class="form-group">
+                    <label for="Distance">Distance</label>
+                    <input class="form-control shadow-none" id="distance" type="text" @bind="_newEvent.Distance"/>
+                      <ValidationMessage For="() => _newEvent.Distance"></ValidationMessage>
+                </div>
+            </div>
+
+            <div class="mx-4">
+                <div class="form-group">
+                    <label for="duration">Duration</label>
+                    <input class="form-control shadow-none" id="duration" type="text" @bind="_newEvent.Duration"/>
+                      <ValidationMessage For="() => _newEvent.Duration"></ValidationMessage>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="d-flex">
+            <div class="mx-4">
+                <div class="form-group">
+                    <label for="comments">Comments</label>
+                    <textarea class="form-control shadow-none" id="comments"  @bind="_newEvent.Comments"></textarea>
+                      <ValidationMessage For="() => _newEvent.Comments"></ValidationMessage>
                 </div>
             </div>
         </div>
         <hr/>
         <div>
-            <button type="submit" @onClick="SaveLog">Save</button>
+            <button type="submit" class="btn btn-primary">Save</button>
         </div>
 
 
     </EditForm>
-    }
+}

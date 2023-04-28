@@ -44,7 +44,7 @@ public class TrainingLogController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] TrainingEventDto trainingEvent)
+    public async Task<IActionResult> Post([FromBody] NewTrainingEventDto trainingEvent)
     {
         var result = await _mediator.Send(new InsertTrainingLog.Command(trainingEvent));
 

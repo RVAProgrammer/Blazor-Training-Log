@@ -15,10 +15,19 @@
         <div class="title">
             @trainingEvent.EventTitle
         </div>
-        <div class="d-flex">
-            <div>@trainingEvent.Distance</div>
-            <div>@trainingEvent.Duration</div>
-            <div>@trainingEvent.EventTypeId</div>
+        <div class="row">
+            <div class="col-3">
+                <div class="label">Distance </div>
+                <div class="details">@trainingEvent.Distance</div>
+            </div>
+            <div class="col-3">
+                <div class="label">Distance </div>
+                <div class="details">@trainingEvent.Duration</div>
+            </div>
+            <div class="col-3">
+                <div class="label">Distance </div>
+                <div class="details">@trainingEvent.EventTypeId</div>
+            </div>
         </div>
     </div>
 }
