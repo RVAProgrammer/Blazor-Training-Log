@@ -5,33 +5,5 @@
 
 <div class="d-flex justify-content-between">
     <h1>Training Log</h1>
-    <div>
-        <button @onclick="@ShowAddModal" type="button">Add Event</button>
-    </div>
+    
 </div>
-@foreach (var trainingEvent in _trainingEvents)
-{
-    <div class="event">
-        <div class="title">
-            @trainingEvent.EventTitle
-        </div>
-        <div class="row">
-            <div class="col-3">
-                <div class="label">Distance </div>
-                <div class="details">@trainingEvent.Distance</div>
-            </div>
-            <div class="col-3">
-                <div class="label">Distance </div>
-                <div class="details">@trainingEvent.Duration</div>
-            </div>
-            <div class="col-3">
-                <div class="label">Distance </div>
-                <div class="details">@trainingEvent.EventTypeId</div>
-            </div>
-        </div>
-    </div>
-}
-
-<ModalWrapper ModalHeader="Add Training Log" @ref="@AddLogEventModal">
-    <AddNewLogEvent OnSaveSuccessful="TrainingLogSaved"></AddNewLogEvent>
-</ModalWrapper>
